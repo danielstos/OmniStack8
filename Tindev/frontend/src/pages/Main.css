@@ -58,20 +58,84 @@
 .main-container ul li .buttons button {
     height: 50px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
-    border-radius:4px;
+    border-radius: 4px;
     background: #fff;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 
-.main-container ul li .buttons button:hover img{
+.main-container ul li .buttons button:hover img {
     transform: translateY(-5px);
-    transform: all 0.2s; 
+    transform: all 0.2s;
 }
 
-.main-container .empty{
+.main-container .empty {
     font-size: 32px;
-    color:#999;
+    color: #999;
     font-weight: bold;
     margin-top: 300px;
+}
+
+.match-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+
+}
+
+.match-container .avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #FFF;
+    margin: 30px 0;
+
+}
+
+
+.match-container strong {
+    font-size: 32px;
+    color: #FFF;
+
+}
+
+.match-container p {
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 400px;
+    color: rgba(255, 255, 255, 0.8);
+
+
+}
+
+.match-container button {
+    border: 0;
+    background: none;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+
+.main-container .username {
+
+    font-weight: bold;
+
+    margin: 3px 0;
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    margin: 10px;
+    padding: 5px;
+    background-color: black;
+    color: white;
 }

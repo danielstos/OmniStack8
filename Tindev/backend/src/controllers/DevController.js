@@ -21,25 +21,34 @@ module.exports = {
 
     },
     async  store(req, res) {
-        const { username } = req.body;
+        try {
+            const { username } = req.body;
 
-        const userExists = await Dev.findOne({ user: username });
+            const userExists = await Dev.findOne({ user: username });
 
-        if (userExists) {
-            return res.json(userExists);
+            if (userExists) {
+                return res.json(userExists);
+            }
+
+            const response = await axios.get(`https://api.github.com/users/${username}`);
+
+            const { name, bio, avatar_url: avatar } = response.data;
+
+            const dev = await Dev.create({
+                name,
+                user: username,
+                user,
+                bio,
+                avatar
+            });
+            return res.json(dev);
         }
-
-        const response = await axios.get(`https://api.github.com/users/${username}`);
-
-        const { name, bio, avatar_url: avatar } = response.data;
-
-        const dev = await Dev.create({
-            name,
-            user: username,
-            bio,
-            avatar
-        });
-        return res.json(dev);
+        catch(err) {
+            console.error(err.message);
+            res.status(404);
+            return res.json({message: 'Esse bicho ai não existe!'});
+        }
+        
     }
 };
 

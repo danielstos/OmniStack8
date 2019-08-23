@@ -12,13 +12,21 @@ export default function Login({ history }) {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const response = await api.post('/devs', {
-        username,
-        });
-        const {_id } =response.data;
-       
-
-        history.push(`/dev/${_id}`); 
+        try {
+            const response = await api.post('/devs', {
+                username,
+                });
+                const {_id } =response.data;
+        
+                history.push({
+                    pathname: `/dev/${_id}`,
+                    state: { user: response.data }
+                  }); 
+        }
+        catch(err) {
+            alert( "usuario não cadastrado!!!");
+        }
+        
     }
 
     return (
